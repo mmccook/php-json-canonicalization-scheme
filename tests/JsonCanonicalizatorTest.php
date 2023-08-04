@@ -9,4 +9,3 @@ it('can handle arrays', function (array $array, string $asHex, string $asJson) {
 })->with('array')
     ->with('hex_output_array')
     ->with('json_output_array');
-
