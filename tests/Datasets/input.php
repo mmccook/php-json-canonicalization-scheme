@@ -1,29 +1,39 @@
 <?php
 
 declare(strict_types=1);
+function __LoadBaseDataFile($file):array
+{
+    $path = __DIR__ . sprintf('/output/json/%s', $file);
+    if (! file_exists($path)) {
+        throw new \Exception("$file does not exists");
+    }
+    if (! is_readable($path)) {
+        throw new \Exception("$file is not readable");
+    }
+    $contents =  file_get_contents($path);
+    return [json_decode(trim($contents), true)];
+}
 
 dataset('array', [
-    [[ 56, [ 'd' => true, "10" => null, "1" => []]]],
+    __LoadBaseDataFile('arrays.json')
 ]);
 
 dataset('structure', [
-    [[
-        "1" => [
-            "f" => ["f" => "hi", "F" => 5],
-            "
-" => 56,
-        ],
-        "10" => [],
-        "111" => [["e" => "yes", "E" => "no"]],
-        "" => "empty",
-        "a" => [],
-        "A" => [],
-    ]],
+    __LoadBaseDataFile('structures.json')
 ]);
 
-dataset('french', [[[
-  "peach" => "This sorting order",
-  "péché" => "is wrong according to French",
-  "pêche" => "but canonicalization MUST",
-  "sin" => "ignore locale",
-]]]);
+dataset('french', [
+    __LoadBaseDataFile('french.json')
+]);
+
+dataset('unicode', [
+    __LoadBaseDataFile('unicode.json')
+]);
+
+dataset('values', [
+    __LoadBaseDataFile('values.json')
+]);
+
+dataset('weird', [
+    __LoadBaseDataFile( 'weird.json')
+]);

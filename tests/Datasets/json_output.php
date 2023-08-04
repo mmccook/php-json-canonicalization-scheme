@@ -1,15 +1,38 @@
 <?php
 
+function __LoadDataFile($file):string
+{
+    $path = __DIR__ . sprintf('/output/json/%s', $file);
+    if (! file_exists($path)) {
+        throw new \Exception("$file does not exists");
+    }
+    if (! is_readable($path)) {
+        throw new \Exception("$file is not readable");
+    }
+    $contents =  file_get_contents($path);
+    return rtrim($contents);
+}
+
 dataset('json_output_array', [
-    '[56,{"1":[],"10":null,"d":true}]',
+    __LoadDataFile('arrays.json')
 ]);
 
 dataset('json_output_structure', [
-    '{"":"empty","1":{"\n":56,"f":{"F":5,"f":"hi"}},"10":[],"111":[{"E":"no","e":"yes"}],"A":[],"a":[]}',
+    __LoadDataFile('structures.json')
 ]);
 
 dataset('json_output_french', [
-    '{"peach":"This sorting order","péché":"is wrong according to French","pêche":"but canonicalization MUST","sin":"ignore locale"}',
+    __LoadDataFile('french.json'),
 ]);
 
+dataset('json_output_unicode', [
+    __LoadDataFile('unicode.json'),
+]);
 
+dataset('json_output_values', [
+    __LoadDataFile('values.json')
+]);
+
+dataset('json_output_weird', [
+    __LoadDataFile('weird.json')
+]);
