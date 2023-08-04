@@ -4,7 +4,6 @@ namespace Mmccook\JsonCanonicalizator;
 
 class Utils
 {
-
     /**
      * @param array $array
      * @return bool
@@ -39,7 +38,7 @@ class Utils
         }
 
         if ($number < 1e+21 && $number >= 1e-6) {
-            $formatted = number_format($number, 7,'.','');
+            $formatted = number_format($number, 7, '.', '');
             $formatted = rtrim($formatted, '.0');
         } else {
             $formatted = sprintf('%e', $number);
