@@ -24,4 +24,3 @@ it('can handle french', fn(array $array, string $asHex, string $asJson) => __Tes
     ->with('french')
     ->with('hex_output_french')
     ->with('json_output_french');
-

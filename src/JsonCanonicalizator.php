@@ -4,7 +4,7 @@ namespace Mmccook\JsonCanonicalizator;
 
 class JsonCanonicalizator implements JsonCanonicalizatorInterface
 {
-    const JSON_FLAGS = \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES;
+    public const JSON_FLAGS = \JSON_UNESCAPED_UNICODE | \JSON_UNESCAPED_SLASHES;
 
     /**
      * @param $data
@@ -19,18 +19,20 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
 
         $result = ob_get_clean();
 
-        return $asHex ? Utils::asHex($result) :  $result;
+        return $asHex ? Utils::asHex($result) : $result;
     }
 
     private function serialize($item): void
     {
         if (is_float($item)) {
             echo Utils::es6NumberFormat($item);
+
             return;
         }
 
         if (null === $item || is_scalar($item)) {
             echo json_encode($item, self::JSON_FLAGS);
+
             return;
         }
 
@@ -45,6 +47,7 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
                 $this->serialize($element);
             }
             echo ']';
+
             return;
         }
 
@@ -55,6 +58,7 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
         uksort($item, function (string $a, string $b) {
             $a = mb_convert_encoding($a, 'UTF-16BE');
             $b = mb_convert_encoding($b, 'UTF-16BE');
+
             return strcmp($a, $b);
         });
 
