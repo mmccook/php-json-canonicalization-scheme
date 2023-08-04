@@ -11,5 +11,3 @@ dataset('json_output_structure', [
 dataset('json_output_french', [
     '{"peach":"This sorting order","péché":"is wrong according to French","pêche":"but canonicalization MUST","sin":"ignore locale"}',
 ]);
-
-
