@@ -25,17 +25,17 @@ it('can handle french', fn (array $array, string $asHex, string $asJson) => __Te
     ->with('hex_output_french')
     ->with('json_output_french');
 
-it('can handle unicode', fn(array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
+it('can handle unicode', fn (array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
     ->with('unicode')
     ->with('hex_output_unicode')
     ->with('json_output_unicode');
 
-it('can handle values', fn(array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
+it('can handle values', fn (array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
     ->with('values')
     ->with('hex_output_values')
     ->with('json_output_values');
 
-it('can handle weird', fn(array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
+it('can handle weird', fn (array $array, string $asHex, string $asJson) => __TestMethod($array, $asHex, $asJson))
     ->with('weird')
     ->with('hex_output_weird')
     ->with('json_output_weird');
