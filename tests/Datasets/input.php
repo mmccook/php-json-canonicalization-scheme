@@ -1,7 +1,7 @@
 <?php
 
 declare(strict_types=1);
-function __LoadBaseDataFile($file):array
+function __LoadBaseDataFile($file): array
 {
     $path = __DIR__ . sprintf('/output/json/%s', $file);
     if (! file_exists($path)) {
@@ -10,30 +10,31 @@ function __LoadBaseDataFile($file):array
     if (! is_readable($path)) {
         throw new \Exception("$file is not readable");
     }
-    $contents =  file_get_contents($path);
+    $contents = file_get_contents($path);
+
     return [json_decode(trim($contents), true)];
 }
 
 dataset('array', [
-    __LoadBaseDataFile('arrays.json')
+    __LoadBaseDataFile('arrays.json'),
 ]);
 
 dataset('structure', [
-    __LoadBaseDataFile('structures.json')
+    __LoadBaseDataFile('structures.json'),
 ]);
 
 dataset('french', [
-    __LoadBaseDataFile('french.json')
+    __LoadBaseDataFile('french.json'),
 ]);
 
 dataset('unicode', [
-    __LoadBaseDataFile('unicode.json')
+    __LoadBaseDataFile('unicode.json'),
 ]);
 
 dataset('values', [
-    __LoadBaseDataFile('values.json')
+    __LoadBaseDataFile('values.json'),
 ]);
 
 dataset('weird', [
-    __LoadBaseDataFile( 'weird.json')
+    __LoadBaseDataFile('weird.json'),
 ]);
