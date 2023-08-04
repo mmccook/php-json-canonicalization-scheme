@@ -22,7 +22,7 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
         return $asHex ? Utils::asHex($result) : $result;
     }
 
-    private function serialize($item): void
+    private function serialize($item)
     {
         if (is_float($item)) {
             echo Utils::es6NumberFormat($item);
@@ -65,6 +65,7 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
         echo '{';
         $next = false;
         foreach ($item as $key => $value) {
+            //var_dump($key, $value);
             if ($next) {
                 echo ',';
             }
@@ -73,5 +74,6 @@ class JsonCanonicalizator implements JsonCanonicalizatorInterface
             echo $outKey, ':', $this->serialize($value);
         }
         echo '}';
+
     }
 }

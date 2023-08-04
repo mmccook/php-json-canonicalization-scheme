@@ -4,8 +4,6 @@ namespace Mmccook\JsonCanonicalizator;
 
 class Utils
 {
-    public const MIN_NUM = 1e-6;
-    public const MAX_NUM = 1e+21;
 
     /**
      * @param array $array
@@ -25,8 +23,9 @@ class Utils
 
     public static function es6NumberFormat(float $number): string
     {
+
         if (is_nan($number) || is_infinite($number)) {
-            throw new \RuntimeException("NAN or Infinity disallowed");
+            throw new \RuntimeException("can't use Nan or Infinity in json");
         }
 
         if (0.0 === $number) {
@@ -39,8 +38,8 @@ class Utils
             $number = -$number;
         }
 
-        if ($number < self::MAX_NUM && $number >= self::MIN_NUM) {
-            $formatted = sprintf('%F', $number);
+        if ($number < 1e+21 && $number >= 1e-6) {
+            $formatted = number_format($number, 7,'.','');
             $formatted = rtrim($formatted, '.0');
         } else {
             $formatted = sprintf('%e', $number);
