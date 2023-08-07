@@ -25,7 +25,6 @@ dataset('json_output_structure', [
 dataset('json_output_french', [
     __LoadDataFile('french.json'),
 ]);
-
 dataset('json_output_unicode', [
     __LoadDataFile('unicode.json'),
 ]);
